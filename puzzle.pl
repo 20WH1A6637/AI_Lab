@@ -61,6 +61,9 @@ apply(left,S1,S2) :-move_left(S1,S2).
 apply(right,S1,S2) :-move_right(S1,S2).
 apply(up,S1,S2) :-move_up(S1,S2).
 apply(dow?- pwd.
+
+OUTPUT
+
 % /home/cse/
 true.
 
@@ -82,4 +85,4 @@ P = [right, down, left, left, up, up, right, down]
 % Break level 1n,S1,S2) :-move_down(S1,S2).
 
 
-OUTPUT
+
