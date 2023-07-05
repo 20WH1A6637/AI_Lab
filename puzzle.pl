@@ -3,21 +3,12 @@ goal([1,2,3,8,0,4,7,6,5]).
 operators([left, right, up, down]).
 /* main procedure for breadth first
 search*/
-bfs(Start,Path) :-
-bfs_path([node(Start,[])], Path).
+bfs(Start,Path) :- bfs_path([node(Start,[])], Path).
+
 /* breadth_first search*/
-bfs_path([node(State,Path) | _],
-Path) :-
-goal(State).
-bfs_path([node(State, Path) |
-Queue], GoalPath) :-
-findall(node(Child,PathToChild),
-(apply(Operator, State, Child),
-append(Path,
-[Operator],PathToChild)
-), ChildNodes),
-append(Queue, ChildNodes,
-NewQueue),
+bfs_path([node(State, Path) | _], Path) :- goal(State).
+
+bfs_path([node(State, Path) | Queue], GoalPath) :- findall(node(Child,PathToChild),(apply(Operator, State, Child), append(Path, [Operator],PathToChild) ), ChildNodes), append(Queue, ChildNodes, NewQueue),
 bfs_path(NewQueue, GoalPath).
 move_left([X1,0,X3, X4,X5,X6,X7,X8,X9],[0,X1,X3, X4,X5,X6, X7,X8,X9]).
 move_left([X1,X2,0, X4,X5,X6,X7,X8,X9],[X1,0,X2, X4,X5,X6, X7,X8,X9]).
